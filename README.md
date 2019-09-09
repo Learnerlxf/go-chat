@@ -1,2 +1,2 @@
 # go-ws
-golang websocket server and client
+golang websocket chat server

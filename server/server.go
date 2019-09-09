@@ -1,11 +1,12 @@
-package main
+package server
 
 import (
 	"fmt"
 	"io/ioutil"
-	"k8s.io/apimachinery/pkg/util/json"
 	"log"
 	"net/http"
+	"encoding/json"
+	libHttp "go-chat/lib/http"
 )
 
 var clientMap map[int]string
@@ -73,7 +74,7 @@ func Say(w http.ResponseWriter, r *http.Request) {
 	for k,v :=range clientMap  {
 		sayContent:= SayContent{ToUserId:k,Content:reqStr}
 		sayJson,_ := json.Marshal(sayContent)
-		HttpSend(v+"/say", string(sayJson))
+		libHttp.HttpSend(v+"/say", string(sayJson))
 	}
 	w.Write([]byte("success"))
 }

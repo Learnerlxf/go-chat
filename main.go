@@ -1,5 +1,6 @@
 package main
 
+import gServer "go-chat/server"
 func main() {
-	HttpServer()
+	gServer.HttpServer()
 }
